@@ -85,7 +85,7 @@ class Agent extends MobileDetect
      * platforms and browsers and utilities.
      * @return array
      */
-    public static function getDetectionRulesExtended()
+    public static function getDetectionRulesExtended(): array
     {
         static $rules;
 
@@ -104,7 +104,7 @@ class Agent extends MobileDetect
         return $rules;
     }
 
-    public function getRules()
+    public function getRules(): array
     {
         return static::getDetectionRulesExtended();
     }
@@ -121,7 +121,7 @@ class Agent extends MobileDetect
         return static::$crawlerDetect;
     }
 
-    public static function getBrowsers()
+    public static function getBrowsers(): array
     {
         return static::mergeRules(
             static::$additionalBrowsers,
@@ -129,7 +129,7 @@ class Agent extends MobileDetect
         );
     }
 
-    public static function getOperatingSystems()
+    public static function getOperatingSystems(): array
     {
         return static::mergeRules(
             static::$operatingSystems,
@@ -137,7 +137,7 @@ class Agent extends MobileDetect
         );
     }
 
-    public static function getPlatforms()
+    public static function getPlatforms(): array
     {
         return static::mergeRules(
             static::$operatingSystems,
@@ -145,12 +145,12 @@ class Agent extends MobileDetect
         );
     }
 
-    public static function getDesktopDevices()
+    public static function getDesktopDevices(): array
     {
         return static::$desktopDevices;
     }
 
-    public static function getProperties()
+    public static function getProperties(): array
     {
         return static::mergeRules(
             static::$additionalProperties,
