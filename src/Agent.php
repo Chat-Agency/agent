@@ -203,9 +203,18 @@ class Agent extends MobileDetect
                 continue;
             }
 
-            // Check match
-            if ($this->match($regex, $this->getUserAgent())) {
-                return $key ?: reset($this->matchesArray);
+            // regex is an array of "strings"
+            if (is_array($regex)) {
+                foreach ($regex as $regexString) {
+                    if ($this->match($regexString, $this->getUserAgent())) {
+                        return $key ?: reset($this->matchesArray);
+                    }
+                }
+            } else {
+                // assume regex is "string"
+                if ($this->match($regex, $this->getUserAgent())) {
+                    return $key ?: reset($this->matchesArray);
+                }
             }
         }
 
